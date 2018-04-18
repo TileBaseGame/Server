@@ -1,3 +1,18 @@
-The files that end in '.mwb' and '.mwb.bak' are mySQL workbench files.
-I added a png file to see the ER diagram without opening workbench.
+To access database:
+
+if you dont have psql, install it using: 
+$sudo apt-get install postgresql postgresql-contrib
+
+Switch over to the postgres account on your server by typing:
+$sudo -u postgres psql
+
+connect to db by typing:
+$psql -d ffwdb
+
+all commands can be found at the following link
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-16-04
+
+
+
+
 
