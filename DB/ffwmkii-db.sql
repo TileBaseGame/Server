@@ -21,3 +21,15 @@ INSERT INTO abilities (description, unit_usable, ability_name) values ('Shoots 6
 INSERT INTO abilities (description, unit_usable, ability_name) values ('do 200% damage', False, 'Glacial Shard');
 
 INSERT INTO abilities (description, unit_usable, ability_name) values ('Does 150% attack healing', False, 'Restoritive Seronade');
+                  
+UPDATE user_units SET unit_id = (SELECT unit_id 
+                                 FROM units 
+                                 WHERE user_unit_id = unit_id);
+                                 
+UPDATE user_units SET user_id = (SELECT user_id 
+                                 FROM users 
+                                 WHERE user_unit_id = user_id);
+
+UPDATE units SET ability_id = (SELECT ability_id 
+                                 FROM abilities 
+                                 WHERE unit_id = ability_id);
