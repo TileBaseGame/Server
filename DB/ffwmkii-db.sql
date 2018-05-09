@@ -1,4 +1,4 @@
-CREATE TABLE abilities (ability_id SERIAL PRIMARY KEY NOT NULL, description VARCHAR(255) NOT NULL, unit_usable BOOLEAN,	ability_name VARCHAR(55) NOT NULL);
+CREATE TABLE abilities (ability_id SERIAL PRIMARY KEY NOT NULL, ability_name VARCHAR(55) NOT NULL, description VARCHAR(255) NOT NULL, usable BOOLEAN);
 
 CREATE TABLE users (user_id SERIAL PRIMARY KEY NOT NULL, email VARCHAR(55), username VARCHAR(55), password TEXT);
 
@@ -14,13 +14,37 @@ INSERT INTO units (unit_type, hp) values ('range', 17);
 
 INSERT INTO units (unit_type, hp) values ('support', 14);
 
-INSERT INTO abilities (description, unit_usable, ability_name) values ('Poisons an unit doing 50% attack damage over 4 turns', False, 'Poison');
+INSERT INTO abilities (ability_name, description, usable) values ('Poison', 'Poisons an unit doing 50% attack damage over 4 turns', TRUE);
 
-INSERT INTO abilities (description, unit_usable, ability_name) values ('Shoots 6 volleys of missiles, each volley does 25% damage', False, 'Arcane Missiles');
+INSERT INTO abilities (ability_name, description, usable) values ('Arcane Missiles', 'Shoots 6 volleys of missiles, each volley does 25% damage', TRUE);
 
-INSERT INTO abilities (description, unit_usable, ability_name) values ('do 200% damage', False, 'Glacial Shard');
+INSERT INTO abilities (ability_name, description, usable) values ('Glacial Shard', 'do 200% damage', TRUE);
 
-INSERT INTO abilities (description, unit_usable, ability_name) values ('Does 150% attack healing', False, 'Restoritive Seronade');
+INSERT INTO abilities (ability_name, description, usable) values ('Restorative Seronade', 'Does 150% attack healing', TRUE);
+
+INSERT INTO abilities (ability_name, description, usable) values ('Teleport', 'Move to an empty tile within 4 tiles', TRUE);
+
+INSERT INTO abilities (ability_name, description, usable) values ('Fireball', 'Shoots a fireball that deals basic attack damage over a radius of 2 tiles', TRUE);
+
+INSERT INTO abilities (ability_name, description, usable) values ('Stun', 'Stuns target, skipping thier next turn', TRUE);
+
+INSERT INTO abilities (ability_name, description, usable) values ('Cover', 'Take damage instead of an ally until warriors next turn', TRUE);
+
+INSERT INTO abilities (ability_name, description, usable) values ('Charge', 'Charge towards a unit with a range of 3 tiles', TRUE);
+
+INSERT INTO abilities (ability_name, description, usable) values ('Harpoon', 'Pull an opponents unit to an empty space in front of warrior and root for 1 turn', TRUE);
+
+INSERT INTO abilities (ability_name, description, usable) values ('Slice and Dice', 'Attack for 20% damage 10 times', TRUE);
+
+INSERT INTO abilities (ability_name, description, usable) values ('Brutal Blow', 'Do 150%-200% basic attack damage', TRUE);
+
+INSERT INTO abilities (ability_name, description, usable) values ('Poison Blades', 'Does 50% basic attack damage per turn for 3 turns', TRUE);
+
+INSERT INTO abilities (ability_name, description, usable) values ('Lament of Fate', 'Buff an allies attack by 50% for 2 turns or Debuff an opponents attack by 50% for 2 turns', TRUE);
+
+INSERT INTO abilities (ability_name, description, usable) values ('Vicious Mockery', 'Just laughs and taunts an opponent', TRUE);
+
+INSERT INTO abilities (ability_name, description, usable) values ('Marionette', 'Move an allie or enemy unit to a new tile', TRUE);
                   
 UPDATE user_units SET unit_id = (SELECT unit_id 
                                  FROM units 
